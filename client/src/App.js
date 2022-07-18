@@ -12,7 +12,7 @@ function App() {
   // Now creating a method for Calling Metamask to connect wallet on clicking Connect Wallet button(here we will show a button when the person is loged out so as to connect to the metamask)
   const connectWallet = async() => {
     try {
-      const ethereum = window // for fetching ethereum from our window, for each event(such as addTweet() or deleteTweet())
+      const {ethereum} = window // for fetching ethereum from our window, for each event(such as addTweet() or deleteTweet())
 
       // for checking Metamask connection
       if (!ethereum) {
@@ -56,9 +56,13 @@ function App() {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator#conditional_chains
     <div className="app">
       {// checking if the "currentAccount" is empty or not
-          currentAccount === '' ? <button className='text-2xl font-bold py-3 px-12 bg-[#f1c232] rounded-lg mb-10 hover:scale-105 transition duration-500 ease-in-out' onClick={connectWallet}>
-                                    Connect Wallet 
-                                  </button>
+           currentAccount === ''? (
+                                  <button
+                                  className='text-2xl font-bold py-3 px-12 bg-[#f1c232] rounded-lg mb-10 hover:scale-105 transition duration-500 ease-in-out'
+                                  onClick={connectWallet}
+                                  >
+                                    Connect Wallet
+                                  </button>)
         
         // then we check "correctNetwork"                      
         : correctNetwork        ? <div className="app">
